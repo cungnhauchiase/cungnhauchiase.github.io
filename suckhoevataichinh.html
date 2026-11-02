@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Phan Thị Bích Trâm giải pháp Sức khỏe và Tài chính | Bio Page</title>
+    <meta name="description" content="Làm thế nào để bảo vệ Sức khỏe và ổn định Tài chính cho Gia đình?" />
+    
+    <!-- Load Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Light theme background with subtle green glow */
+            background: #ffffff;
+            background-image: radial-gradient(circle at 50% 0%, rgba(23, 168, 0, 0.08) 0%, rgba(255, 255, 255, 1) 60%);
+            background-attachment: fixed;
+            color: #334155;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Modern light UI utility classes */
+        .modern-card {
+            background: #ffffff;
+            border: 1px solid rgba(23, 168, 0, 0.1);
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 0 3px rgba(23, 168, 0, 0.02);
+            transition: all 0.3s ease;
+        }
+
+        .modern-button {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 15px -3px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .modern-button:hover {
+            transform: translateY(-2px);
+            border-color: #17a800;
+            box-shadow: 0 8px 25px -5px rgba(23, 168, 0, 0.15);
+        }
+
+        /* Hide scrollbar for clean look */
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+
+        /* Avatar glow effect - updated to green */
+        .avatar-glow {
+            box-shadow: 0 0 30px rgba(23, 168, 0, 0.25);
+        }
+
+        /* Custom Bottom Sheet Animation */
+        .bottom-sheet {
+            transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+        }
+        
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;  
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="relative antialiased selection:bg-[#17a800] selection:text-white">
+    
+    <main class="flex flex-col max-w-md min-h-screen mx-auto p-5 pb-28">
+        
+        <section class="text-center mt-8 mb-8 animate-fade-in-down">
+            <!-- Avatar Container -->
+            <div class="relative mx-auto rounded-full h-36 w-36 mb-5 shadow-[0_10px_30px_rgba(23,168,0,0.35)] p-[3px] bg-gradient-to-tr from-[#17a800] via-[#4ade80] to-[#17a800]">
+                <div class="w-full h-full rounded-full overflow-hidden border-2 border-white bg-white">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiIqvEqUN0IxOSCkaYtQveNc9SGgk3k7WrZdFS3hUFA5VkIJjXXUBmxrxpadSmEP_HdVpJbvRW9BCjPuFzGV4787fNoYYufZuSMazv7rBB3YpwLUD5jqp9X0PaK6GXy8Q2pUyiWym-9jZM16iGFGdbiT-hCZ8xNpT78Vr6EwLXo0XN59w/s1600/phan-thi-bich-tram.jpg" 
+                         alt="Avatar PHAN THỊ BÍCH TRÂM" 
+                         class="w-full h-full object-cover">
+                </div>
+                
+                <!-- QR Code Trigger Button -->
+                <button onclick="openBottomSheet()" class="absolute flex justify-center items-center bottom-0 right-0 translate-x-1 translate-y-1 w-10 h-10 rounded-full bg-white text-gray-800 shadow-lg hover:scale-110 transition-transform z-10 border-2 border-transparent">
+                    <svg class="w-5 h-5 text-[#17a800]" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.91727 5.83341V3.75008C2.91727 3.28984 3.29037 2.91675 3.75061 2.91675H5.83394M17.1673 13.7501V15.8334C17.1673 16.2937 16.7942 16.6667 16.3339 16.6667H14.2506M17.1673 5.83341V3.75008C17.1673 3.28984 16.7942 2.91675 16.3339 2.91675H14.2506M2.91727 13.7501V15.8334C2.91727 16.2937 3.29037 16.6667 3.75061 16.6667H5.83394M6.66727 6.25008H7.50061V7.08341H6.66727V6.25008ZM5.83394 4.58341H8.33394C8.79418 4.58341 9.16727 4.95651 9.16727 5.41675V7.91675C9.16727 8.37698 8.79418 8.75008 8.33394 8.75008H5.83394C5.3737 8.75008 5.00061 8.37698 5.00061 7.91675V5.41675C5.00061 4.95651 5.3737 4.58341 5.83394 4.58341ZM12.5006 6.25008H13.3339V7.08341H12.5006V6.25008ZM10.8339 10.4167H11.6673V11.2501H10.8339V10.4167ZM14.1673 10.4167H15.0006V11.2501H14.1673V10.4167ZM14.1673 13.7501H15.0006V14.5834H14.1673V13.7501ZM10.8339 13.7501H11.6673V14.5834H10.8339V13.7501ZM12.5006 12.0834H13.3339V12.9167H12.5006V12.0834ZM11.6673 4.58341H14.1673C14.6275 4.58341 15.0006 4.95651 15.0006 5.41675V7.91675C15.0006 8.37698 14.6275 8.75008 14.1673 8.75008H11.6673C11.207 8.75008 10.8339 8.37698 10.8339 7.91675V5.41675C10.8339 4.95651 11.207 4.58341 11.6673 4.58341ZM6.66727 12.0834H7.50061V12.9167H6.66727V12.0834ZM5.83394 10.4167H8.33394C8.79418 10.4167 9.16727 10.7898 9.16727 11.2501V13.7501C9.16727 14.2103 8.79418 14.5834 8.33394 14.5834H5.83394C5.3737 14.5834 5.00061 14.2103 5.00061 13.7501V11.2501C5.00061 10.7898 5.3737 10.4167 5.83394 10.4167Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Name & Tagline -->
+            <div class="mb-2 flex justify-center items-center gap-1.5">
+                <h1 class="text-2xl font-bold tracking-wide uppercase text-[#17a800]">PHAN THỊ BÍCH TRÂM</h1>
+                <span class="text-[#17a800] bg-green-50 rounded-full p-0.5" title="Verified">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                </span>
+            </div>
+            <p class="text-black font-medium text-sm px-4">Cùng bạn chăm sóc <strong class="font-bold">Sức khỏe</strong> và vững vàng <strong class="font-bold">Tài chính</strong> cho cả gia đình!</p>
+        </section>
+
+        <section class="flex flex-col gap-3 mb-10 w-full">
+            <!-- Phone -->
+            <a href="tel:0981545103" class="modern-button w-full flex items-center p-2 rounded-full text-slate-700">
+                <div class="rounded-full h-12 w-12 flex-shrink-0 bg-green-50 p-0.5 flex items-center justify-center">
+                    <svg class="w-6 h-6 text-[#17a800]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                </div>
+                <div class="flex-auto text-center font-medium pr-12 tracking-wide text-[15px]">
+                    Điện thoại
+                </div>
+            </a>
+
+            <!-- Zalo -->
+            <a href="https://zalo.me/0981545103" target="_blank" class="modern-button w-full flex items-center p-2 rounded-full text-slate-700">
+                <div class="rounded-full h-12 w-12 flex-shrink-0 bg-blue-50 p-0.5 flex items-center justify-center">
+                    <span class="text-blue-600 font-bold text-sm">Zalo</span>
+                </div>
+                <div class="flex-auto text-center font-medium pr-12 tracking-wide text-[15px]">
+                    Zalo
+                </div>
+            </a>
+
+            <!-- Facebook -->
+            <a href="https://facebook.com" target="_blank" class="modern-button w-full flex items-center p-2 rounded-full text-slate-700">
+                <div class="rounded-full h-12 w-12 flex-shrink-0 bg-[#1877F2]/10 p-2 flex items-center justify-center">
+                    <svg class="w-7 h-7 text-[#1877F2]" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.469h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                </div>
+                <div class="flex-auto text-center font-medium pr-12 tracking-wide text-[15px]">
+                    Facebook
+                </div>
+            </a>
+        </section>
+
+        <section class="mb-10 w-full">
+            <h2 class="text-center font-bold text-xl text-[#17a800] mb-6 tracking-wider uppercase border-b-2 border-[#17a800] pb-2 inline-block relative left-1/2 -translate-x-1/2">
+                Dịch vụ - Quà tặng
+            </h2>
+            
+            <div class="grid grid-cols-2 gap-4">
+                <!-- Gift 1 -->
+                <a href="" target="_blank" class="modern-card rounded-2xl overflow-hidden group flex flex-col h-full hover:-translate-y-1">
+                    <div class="relative aspect-video w-full overflow-hidden">
+                        <!-- Nhãn Miễn Phí 100% -->
+                        <div class="absolute top-2 right-2 bg-red-600 text-white text-[9px] sm:text-[10px] font-bold px-2 py-1 rounded-full shadow-md z-10 flex items-center gap-1 border border-white/40">
+                            <svg class="w-3 h-3 text-yellow-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.381z" clip-rule="evenodd"></path></svg>
+                            MIỄN PHÍ 100%
+                        </div>
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjQfj69zZxhHDD0jNsudR9-hBuEVZo4S-0rMKXQR9xJj8S6_MVLnBYmqeyHQ2twOey96_QNEqoAEOK07-I5DyDs1mbBhvdIl4EALH5O7MYJraZ1_hCpQYcD2MT5XbTNGRVp941HKSC4jjNqgnFTUkUVMN2gyr-eU3oy6oVYpKLnZ12E75S51cJ_K4Iv-DKc/s1600/Trung-tam-ho-tro-boi-thuong.png" alt="Trung tâm hỗ trợ bồi thường" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-3 flex-1 flex items-center bg-red-600">
+                        <p class="font-bold text-[13px] leading-snug text-left text-white w-full">
+                            TRUNG TÂM HỖ TRỢ BỒI THƯỜNG BẢO HIỂM
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Gift 2 -->
+                <a href="" target="_blank" class="modern-card rounded-2xl overflow-hidden group flex flex-col h-full hover:-translate-y-1">
+                    <div class="relative aspect-video w-full overflow-hidden">
+                        <!-- Nhãn Miễn Phí 100% -->
+                        <div class="absolute top-2 right-2 bg-[#17a800] text-white text-[9px] sm:text-[10px] font-bold px-2 py-1 rounded-full shadow-md z-10 flex items-center gap-1 border border-white/40">
+                            <svg class="w-3 h-3 text-yellow-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.381z" clip-rule="evenodd"></path></svg>
+                            MIỄN PHÍ 100%
+                        </div>
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgtds2GVRTGJhriJP8CEMMOXnf8prZnYvuT9qCVBqIAa1O9lr0M_6bp5GHwsFXlBmmt507oAbi7QsDl5YSrDmll2PRwu8u4L_PDu6Q6W1MS2JNF9woDfZdX7lNf_pVfHlDPeHg54-s2oYZo-lnfkpRY2wzdYCMZ1o2knhQTMn39PmOeGtVHhgNL3OH40gnk/s1600/Dich-vu-ra-soat-hop-dong-bao-hiem.png" alt="Dịch vụ rà soát hợp đồng" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-3 flex-1 flex items-center bg-[#17a800]">
+                        <p class="font-medium text-sm leading-snug line-clamp-2 text-white">
+                            DỊCH VỤ RÀ SOÁT HỢP ĐỒNG BẢO HIỂM
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Gift 3 -->
+                <a href="" target="_blank" class="modern-card rounded-2xl overflow-hidden group flex flex-col h-full hover:-translate-y-1">
+                    <div class="aspect-video w-full overflow-hidden">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgEcMcs1Zz7FzmZKkB6rqUAQFAEzqqnFCnSjTW9AJyH5-kv6xbfGNc0mGf1QP8FaztCx_E4bTFdNEz_Lim2xNFogQCB7gkjtUCkY09m5VYjzWJOxTly2BJgrnbYq7Krwm8n15OU7YdWJMhKUio92nIZwPf0GHRh_SuF5znX7AAlPcsd4o_LOEc4_BNtTJF1/s1600/Dang-ky-mua-BHYT.png" alt="Đăng ký mua bảo hiểm y tế" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-3 flex-1 flex items-center bg-[#008ACD]">
+                        <p class="font-medium text-sm leading-snug line-clamp-2 text-white">
+                            ĐĂNG KÝ MUA BẢO HIỂM Y TẾ
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Gift 4 -->
+                <a href="" target="_blank" class="modern-card rounded-2xl overflow-hidden group flex flex-col h-full hover:-translate-y-1">
+                    <div class="aspect-video w-full overflow-hidden">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi631aBqZQOFoejcNnnBES_ccR9uDjUe8bqCHefqI8fKU8W7mhTyNTc8HCCKww-bF_4gDVLEH01xZsCTyNkFmLlUNougQqTcbjmnuM8bhr2oSbAIMsNyEXMqUwa4YkJPQTQapzc8NuKzbot7bbmiJSMdME67m47KR0dQQJC9RZhD5wWIomMx2UqPuzooeZM/s1600/Dang-ky-mua-BHXH.png" alt="Đăng ký mua bảo hiểm xã hội" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-3 flex-1 flex items-center bg-[#008ACD]">
+                        <p class="font-medium text-sm leading-snug line-clamp-2 text-white">
+                            ĐĂNG KÝ MUA BẢO HIỂM XÃ HỘI
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Gift 5 -->
+                <a href="" target="_blank" class="modern-card rounded-2xl overflow-hidden group flex flex-col h-full hover:-translate-y-1">
+                    <div class="aspect-video w-full overflow-hidden">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgV0tQlNREuo7Wjw7PMBoRFTVv-k1OJPpQgHlQ_NLZb0U5T5pFBbJlSu7d3GCn6hZ3sHYBMdHcLI3OR_gGjeppeQrLsD0ZpQ_9Ubg1UrxYKBkjljBNlm12QE1O7uiScGkJcTa-BVl0bym38Vq2GA3X47b8InKTTEZC-s_OQdJMs8w8dlLWwiD0_3PwCchvd/s1600/Tuyen-DL-CTV-BHNT.png" alt="Tuyển Đại lý/CTV Bảo hiểm nhân thọ" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-3 flex-1 flex items-center bg-[#17a800]">
+                        <p class="font-medium text-sm leading-snug line-clamp-2 text-white">
+                            Tuyển Đại lý/CTV Bảo hiểm nhân thọ
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Gift 6 -->
+                <a href="" target="_blank" class="modern-card rounded-2xl overflow-hidden group flex flex-col h-full hover:-translate-y-1">
+                    <div class="aspect-video w-full overflow-hidden">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjh1aXt9GiQ5ipSH5ibicJDfoJl4Y3lA0TOIonn8TmfoOnaECz70UVqrYU7JqAhjpfXPAETXq1ix4NfzS619HWcPVR5AXYcxZmuHcFdbH76EVsnlRzeVugA-J1HqwPtgEgg63VnsbvdbpMjPochg1mxbBwJlpZ2c6UmURcmGZIgs4cRN0ohLICIVJr9cvMr/s1600/Tuyen-DL-CTV-BHPNT.png" alt="Tuyển Đại lý/CTV Bảo hiểm phi nhân thọ" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-3 flex-1 flex items-center bg-[#17a800]">
+                        <p class="font-medium text-sm leading-snug line-clamp-2 text-white">
+                            Tuyển Đại lý/CTV Bảo hiểm phi nhân thọ
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Gift 7 -->
+                <a href="" target="_blank" class="modern-card rounded-2xl overflow-hidden group flex flex-col h-full hover:-translate-y-1">
+                    <div class="aspect-video w-full overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=400&q=80" alt="Siêu thị bảo hiểm" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-3 flex-1 flex items-center bg-[#ffab0c]">
+                        <p class="font-medium text-sm leading-snug line-clamp-2 text-white">
+                            Quà tặng từ Siêu thị online Droppii
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Gift 8 -->
+                <a href="" target="_blank" class="modern-card rounded-2xl overflow-hidden group flex flex-col h-full hover:-translate-y-1">
+                    <div class="aspect-video w-full overflow-hidden">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiitlkEK0irgZFtH2nPnED9pmeC8EJyKPmeRTEA239R12u9uM0xVsq2NiS2KUJx3eW1ugKYBRav0J-TtnFCE6YIA-iX94qu_cRvoNOHmkYVYXGVpQ1zWEpusDPV2Qa4bJ4lXnkSSvXtbfYFiDfklFallQOp7Vzne3FaWGg_jB_uEcUXV2mfmIc-6y9c6gRS/s1600/Qua-tang-bao-hiem-xe-may.png" alt="Quà tặng bảo hiểm xe máy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-3 flex-1 flex items-center bg-[#ffab0c]">
+                        <p class="font-medium text-sm leading-snug line-clamp-2 text-white">
+                            Quà tặng bảo hiểm xe máy
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="text-center bg-green-50/50 border border-[#17a800]/20 p-4 rounded-2xl mb-8">
+            <p class="text-slate-600 font-medium text-[13px]">Bạn có thể gọi, nhắn tin qua zalo hay Đăng ký các Dịch vụ</p>
+            <p class="text-slate-600 font-medium text-[13px] mt-0.5">mình sẽ liên hệ và tư vấn cho bạn nhé!</p>
+        </section>
+
+        <!-- Floating Action Button -->
+        <div class="fixed bottom-6 left-1/2 -translate-x-1/2 max-w-md w-full px-5 z-20">
+            <!-- Simulated Form Action (Keeping structural integrity of original) -->
+            <form id="contact-form" method="GET" action="/vcard" onsubmit="event.preventDefault(); showMessage('Đang tải danh bạ...');">
+                <button type="submit" class="w-full py-3.5 rounded-full font-bold text-lg text-white shadow-[0_10px_25px_rgba(23,168,0,0.3)] bg-gradient-to-r from-[#17a800] to-[#2cd810] hover:scale-[1.02] active:scale-95 transition-transform">
+                    Lưu danh bạ
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <div id="bottomSheet" class="fixed inset-0 z-50 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <!-- Overlay -->
+        <div id="bottomSheetOverlay" class="fixed inset-0 bg-gray-900 bg-opacity-60 backdrop-blur-sm transition-opacity opacity-0" onclick="closeBottomSheet()"></div>
+        
+        <!-- Sheet Content -->
+        <div class="fixed inset-x-0 bottom-0 z-50 flex justify-center">
+            <div id="bottomSheetContent" class="bottom-sheet transform translate-y-full bg-white w-full max-w-md rounded-t-3xl shadow-2xl overflow-hidden flex flex-col">
+                
+                <!-- Header -->
+                <div class="px-5 py-4 border-b border-gray-100 flex items-center justify-between">
+                    <div class="w-8"></div>
+                    <h3 class="text-lg font-bold text-gray-800">Mã QR của tôi</h3>
+                    <button onclick="closeBottomSheet()" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 transition-colors">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6L18 18"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Body -->
+                <div class="p-6 flex flex-col items-center">
+                    <!-- Dynamic QR generation via API for demonstration -->
+                    <div class="p-3 bg-white border border-gray-200 rounded-xl shadow-sm mb-2">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://bio.biznet.com.vn/0981545103" alt="QR Code" class="w-48 h-48">
+                    </div>
+                    <p class="text-gray-500 font-medium mb-6">ID: insmwz</p>
+
+                    <div class="flex items-center w-full gap-3 mb-6">
+                        <button onclick="copyLink()" class="flex-1 flex items-center justify-center gap-2 py-3 border-2 border-[#17a800] text-[#17a800] rounded-full font-semibold hover:bg-green-50 transition-colors">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                            </svg>
+                            Sao chép link
+                        </button>
+                        
+                        <button onclick="showMessage('Đang tải hình ảnh...')" class="flex-1 flex items-center justify-center gap-2 py-3 bg-[#17a800] text-white rounded-full font-semibold hover:bg-[#148f00] shadow-md transition-colors">
+                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                            </svg>
+                            Tải xuống
+                        </button>
+                    </div>
+                    
+                    <p class="text-center text-sm text-gray-500 leading-relaxed px-4">
+                        Quét mã QR để kết nối và chia sẻ thông tin đơn giản, nhanh chóng, chuyên nghiệp.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification System -->
+    <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 bg-gray-800 text-white px-6 py-3 rounded-full shadow-lg transform -translate-y-20 opacity-0 transition-all duration-300 z-50 flex items-center gap-2">
+        <svg class="w-5 h-5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+        </svg>
+        <span id="toastMessage" class="font-medium text-sm">Thông báo</span>
+    </div>
+
+    <script>
+        // Modal Logic
+        const bottomSheet = document.getElementById('bottomSheet');
+        const overlay = document.getElementById('bottomSheetOverlay');
+        const content = document.getElementById('bottomSheetContent');
+
+        function openBottomSheet() {
+            bottomSheet.classList.remove('hidden');
+            // Small delay to allow display:block to apply before animating opacity/transform
+            setTimeout(() => {
+                overlay.classList.remove('opacity-0');
+                content.classList.remove('translate-y-full');
+            }, 10);
+        }
+
+        function closeBottomSheet() {
+            overlay.classList.add('opacity-0');
+            content.classList.add('translate-y-full');
+            
+            // Wait for animation to finish before hiding element
+            setTimeout(() => {
+                bottomSheet.classList.add('hidden');
+            }, 400); // Matches transition duration
+        }
+
+        // Copy Link Logic
+        function copyLink() {
+            const tempInput = document.createElement("input");
+            tempInput.value = window.location.href; // In real app, this might be a specific shortlink
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            
+            closeBottomSheet();
+            showMessage('Đã sao chép liên kết!');
+        }
+
+        // Custom Toast Notification (Replaces alert())
+        let toastTimeout;
+        function showMessage(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMessage');
+            
+            toastMsg.textContent = message;
+            
+            // Show toast
+            toast.classList.remove('-translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            
+            // Reset timer if clicked multiple times
+            clearTimeout(toastTimeout);
+            
+            // Hide after 3 seconds
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('-translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
