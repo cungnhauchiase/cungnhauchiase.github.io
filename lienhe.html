@@ -315,6 +315,7 @@
       const statusBox = document.getElementById("formStatus");
       const phoneInput = document.getElementById("phone");
       const phoneRegex = /^(\+84|0)(9|8|7|5|3)[0-9]{8}$/;
+      const ENDPOINT_URL = "https://script.google.com/macros/s/AKfycbx9f_KDqJz2Juk_z1rNoDCpl6-fXxk3zwcm3iVVYRTgCGTUL8LHE1ZHRcv1LF2SG1bvug/exec";
 
       function showStatus(msg, type) {
         statusBox.textContent = msg;
@@ -346,38 +347,27 @@
           return;
         }
 
-        // Nếu muốn gửi dữ liệu sang Google Apps Script / Webhook / Formspree,
-        // bạn có thể dán endpoint URL vào biến ENDPOINT_URL bên dưới:
-        const ENDPOINT_URL = "";
-
-        if (!ENDPOINT_URL) {
-          showStatus("Cảm ơn bạn đã quan tâm! Thông tin liên hệ của bạn đã được ghi nhận.", "success");
-          form.reset();
-          return;
-        }
-
         const submitBtn = form.querySelector('button[type="submit"]');
         submitBtn.disabled = true;
         submitBtn.textContent = "Đang gửi...";
 
         fetch(ENDPOINT_URL, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: JSON.stringify({
             name: nameVal,
             phone: phoneVal,
             message: messageVal,
-            source: window.location.href,
-            submittedAt: new Date().toISOString()
+            source: window.location.href
           })
         })
-          .then(function (res) {
-            if (!res.ok) throw new Error("Network error");
-            showStatus("Cảm ơn bạn đã quan tâm!", "success");
+          .then(function () {
+            showStatus("Cảm ơn bạn đã quan tâm! Thông tin liên hệ của bạn đã được ghi nhận.", "success");
             form.reset();
           })
           .catch(function () {
-            showStatus("Có lỗi khi gửi liên hệ. Vui lòng thử lại sau.", "error");
+            showStatus("Có lỗi kết nối. Vui lòng thử lại sau.", "error");
           })
           .finally(function () {
             submitBtn.disabled = false;
