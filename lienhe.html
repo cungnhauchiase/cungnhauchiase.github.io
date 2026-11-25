@@ -23,8 +23,11 @@
       --brand-dark: #128500;
       --brand-light: #eefaf0;
       --brand-border: #b7e4b0;
+      --danger: #dc2626;
+      --danger-light: #fef2f2;
+      --danger-border: #fca5a5;
       --text-main: #1f2937;
-      --text-muted: #6b7280;
+      --text-muted: #4b5563;
       --bg-page: linear-gradient(160deg, #f3fbf2 0%, #e7f6e6 55%, #f8fcf7 100%);
       --card-bg: #ffffff;
       --radius: 14px;
@@ -146,6 +149,11 @@
       box-shadow: 0 0 0 3px rgba(23, 168, 0, 0.16);
     }
 
+    .form-control.is-invalid {
+      border-color: var(--danger);
+      box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.14);
+    }
+
     textarea.form-control {
       min-height: 118px;
       resize: vertical;
@@ -179,13 +187,18 @@
       transform: translateY(1px);
     }
 
+    .btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
     .btn-primary {
       background-color: var(--brand);
       color: #ffffff;
       box-shadow: 0 6px 16px rgba(23, 168, 0, 0.22);
     }
 
-    .btn-primary:hover {
+    .btn-primary:hover:not(:disabled) {
       background-color: var(--brand-dark);
     }
 
@@ -200,28 +213,120 @@
       color: #ffffff;
     }
 
-    .alert-box {
+    /* Popup Modal */
+    .popup-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(17, 24, 39, 0.55);
+      backdrop-filter: blur(2px);
       display: none;
-      margin-top: 16px;
-      padding: 12px 14px;
-      border-radius: 10px;
-      font-size: 14px;
-      font-weight: 600;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .popup-backdrop.show {
+      display: flex;
+      opacity: 1;
+    }
+
+    .popup-dialog {
+      width: 100%;
+      max-width: 390px;
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 24px 22px 20px;
       text-align: center;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
+      transform: scale(0.94) translateY(8px);
+      transition: transform 0.2s ease;
+      border: 1.5px solid var(--brand-border);
     }
 
-    .alert-success {
-      display: block;
-      background-color: var(--brand-light);
-      color: var(--brand-dark);
-      border: 1px solid var(--brand);
+    .popup-backdrop.show .popup-dialog {
+      transform: scale(1) translateY(0);
     }
 
-    .alert-error {
-      display: block;
-      background-color: #fef2f2;
-      color: #b91c1c;
-      border: 1px solid #fca5a5;
+    .popup-dialog.popup-error {
+      border-color: var(--danger-border);
+    }
+
+    .popup-icon {
+      width: 54px;
+      height: 54px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      font-weight: 800;
+    }
+
+    .popup-success .popup-icon {
+      background: var(--brand-light);
+      color: var(--brand);
+      border: 2px solid var(--brand);
+    }
+
+    .popup-error .popup-icon {
+      background: var(--danger-light);
+      color: var(--danger);
+      border: 2px solid var(--danger);
+    }
+
+    .popup-title {
+      font-family: "Mulish", sans-serif;
+      font-size: 19px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .popup-success .popup-title {
+      color: var(--brand);
+    }
+
+    .popup-error .popup-title {
+      color: var(--danger);
+    }
+
+    .popup-message {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.55;
+    }
+
+    .popup-btn {
+      width: 100%;
+      min-height: 42px;
+      border: none;
+      border-radius: 10px;
+      font-family: "Mulish", sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: #ffffff;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .popup-success .popup-btn {
+      background: var(--brand);
+    }
+
+    .popup-success .popup-btn:hover {
+      background: var(--brand-dark);
+    }
+
+    .popup-error .popup-btn {
+      background: var(--danger);
+    }
+
+    .popup-error .popup-btn:hover {
+      background: #b91c1c;
     }
 
     @media (max-width: 480px) {
@@ -303,47 +408,120 @@
             Quay lại Trang chủ
           </a>
         </div>
-
-        <div id="formStatus" class="alert-box" role="status" aria-live="polite"></div>
       </form>
     </section>
   </main>
 
+  <!-- Popup thông báo -->
+  <div id="popupBackdrop" class="popup-backdrop" role="dialog" aria-modal="true" aria-labelledby="popupTitle" aria-describedby="popupMessage">
+    <div id="popupDialog" class="popup-dialog popup-success">
+      <div id="popupIcon" class="popup-icon">✓</div>
+      <h3 id="popupTitle" class="popup-title">Thông báo</h3>
+      <p id="popupMessage" class="popup-message"></p>
+      <button id="popupCloseBtn" type="button" class="popup-btn">Đóng</button>
+    </div>
+  </div>
+
   <script>
     (function () {
       const form = document.getElementById("contactForm");
-      const statusBox = document.getElementById("formStatus");
+      const nameInput = document.getElementById("name");
       const phoneInput = document.getElementById("phone");
+      const messageInput = document.getElementById("message");
+
+      const popupBackdrop = document.getElementById("popupBackdrop");
+      const popupDialog = document.getElementById("popupDialog");
+      const popupIcon = document.getElementById("popupIcon");
+      const popupTitle = document.getElementById("popupTitle");
+      const popupMessage = document.getElementById("popupMessage");
+      const popupCloseBtn = document.getElementById("popupCloseBtn");
+
       const phoneRegex = /^(\+84|0)(9|8|7|5|3)[0-9]{8}$/;
       const ENDPOINT_URL = "https://script.google.com/macros/s/AKfycbx9f_KDqJz2Juk_z1rNoDCpl6-fXxk3zwcm3iVVYRTgCGTUL8LHE1ZHRcv1LF2SG1bvug/exec";
 
-      function showStatus(msg, type) {
-        statusBox.textContent = msg;
-        statusBox.className = "alert-box " + (type === "success" ? "alert-success" : "alert-error");
+      let targetFocusAfterClose = null;
+
+      function openPopup(type, title, message, focusEl) {
+        targetFocusAfterClose = focusEl || null;
+        popupDialog.className = "popup-dialog " + (type === "error" ? "popup-error" : "popup-success");
+        popupIcon.textContent = type === "error" ? "!" : "✓";
+        popupTitle.textContent = title;
+        popupMessage.textContent = message;
+        popupCloseBtn.textContent = type === "error" ? "Nhập lại" : "Đã hiểu";
+
+        popupBackdrop.classList.add("show");
+        popupCloseBtn.focus();
       }
+
+      function closePopup() {
+        popupBackdrop.classList.remove("show");
+        if (targetFocusAfterClose) {
+          targetFocusAfterClose.focus();
+          targetFocusAfterClose = null;
+        }
+      }
+
+      popupCloseBtn.addEventListener("click", closePopup);
+
+      popupBackdrop.addEventListener("click", function (e) {
+        if (e.target === popupBackdrop) {
+          closePopup();
+        }
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && popupBackdrop.classList.contains("show")) {
+          closePopup();
+        }
+      });
+
+      [nameInput, phoneInput, messageInput].forEach(function (input) {
+        input.addEventListener("input", function () {
+          input.classList.remove("is-invalid");
+        });
+      });
 
       form.addEventListener("submit", function (e) {
         e.preventDefault();
 
-        const nameVal = form.name.value.trim();
+        const nameVal = nameInput.value.trim();
         const phoneVal = phoneInput.value.trim().replace(/\s+/g, "");
-        const messageVal = form.message.value.trim();
+        const messageVal = messageInput.value.trim();
+
+        [nameInput, phoneInput, messageInput].forEach(function (el) {
+          el.classList.remove("is-invalid");
+        });
 
         if (!nameVal) {
-          showStatus("Vui lòng nhập họ và tên.", "error");
-          form.name.focus();
+          nameInput.classList.add("is-invalid");
+          openPopup(
+            "error",
+            "Thiếu thông tin",
+            "Vui lòng nhập họ và tên trước khi gửi liên hệ.",
+            nameInput
+          );
           return;
         }
 
         if (!phoneRegex.test(phoneVal)) {
-          showStatus("Vui lòng nhập số điện thoại hợp lệ (10 số, đầu 03, 05, 07, 08, 09 hoặc +84).", "error");
-          phoneInput.focus();
+          phoneInput.classList.add("is-invalid");
+          openPopup(
+            "error",
+            "Số điện thoại không hợp lệ",
+            "Vui lòng nhập số điện thoại di động Việt Nam hợp lệ gồm 10 chữ số, bắt đầu bằng 03, 05, 07, 08, 09 hoặc +84.",
+            phoneInput
+          );
           return;
         }
 
         if (!messageVal) {
-          showStatus("Vui lòng nhập lời nhắn cần hỗ trợ.", "error");
-          form.message.focus();
+          messageInput.classList.add("is-invalid");
+          openPopup(
+            "error",
+            "Thiếu lời nhắn",
+            "Vui lòng nhập nội dung lời nhắn cần tư vấn hoặc hỗ trợ.",
+            messageInput
+          );
           return;
         }
 
@@ -363,11 +541,19 @@
           })
         })
           .then(function () {
-            showStatus("Cảm ơn bạn đã quan tâm! Thông tin liên hệ của bạn đã được ghi nhận.", "success");
             form.reset();
+            openPopup(
+              "success",
+              "Gửi liên hệ thành công!",
+              "Cảm ơn bạn đã quan tâm! Bích Trâm — Cùng Nhau Chia Sẻ đã nhận được thông tin và sẽ liên hệ lại với bạn sớm nhất."
+            );
           })
           .catch(function () {
-            showStatus("Có lỗi kết nối. Vui lòng thử lại sau.", "error");
+            openPopup(
+              "error",
+              "Gửi không thành công",
+              "Đã xảy ra lỗi kết nối khi gửi thông tin. Vui lòng kiểm tra lại mạng và thử lại."
+            );
           })
           .finally(function () {
             submitBtn.disabled = false;
